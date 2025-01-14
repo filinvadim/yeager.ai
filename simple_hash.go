@@ -71,7 +71,7 @@ func reconstructData(unorderedFragments map[sequence]Fragment) (string, error) {
 func verify(fragmentsMap map[sequence]Fragment) (_ []verifiedFragment, baseErr error) {
 	var verifiedFragments = make([]verifiedFragment, 0, len(fragmentsMap))
 
-	// in Go map access is always random
+	// in Go map iteration element access is always random
 	for i, fr := range fragmentsMap {
 		if err := verifySequence(i); err != nil {
 			baseErr = errors.Join(baseErr, err)
